@@ -1,9 +1,9 @@
 [package]
 name = "irq-loongarch"
-version = "0.1.0"
+version = "0.1.1-pre.1"
 description = "LoongArch IRQ controller drivers (EIOINTC/PCH-PIC/LIOINTC)"
-homepage = "https://github.com/numpy1314/irq-loongarch"
-repository = "https://github.com/numpy1314/irq-loongarch"
+homepage = "https://github.com/numpy1314/irq_loongarch"
+repository = "https://github.com/numpy1314/irq_loongarch"
 keywords = ["loongarch", "irq", "interrupt", "bare-metal", "kernel"]
 license = "MIT OR Apache-2.0"
 authors = ["Xie Zujun <zujunxie1@gmail.com>"]
