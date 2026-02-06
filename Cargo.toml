@@ -1,13 +1,16 @@
 [package]
-name = "irq-loongarch"                 # crates.io 上显示的包名
+name = "irq-loongarch"
 version = "0.1.0"
-edition = "2024"
 description = "LoongArch IRQ controller drivers (EIOINTC/PCH-PIC/LIOINTC)"
-license = "MIT OR Apache-2.0"
-readme = "README.md"
-repository = "https://github.com/<your-org-or-you>/irq_loongarch"
+homepage = "https://github.com/numpy1314/irq-loongarch"
+repository = "https://github.com/numpy1314/irq-loongarch"
 keywords = ["loongarch", "irq", "interrupt", "bare-metal", "kernel"]
+license = "MIT OR Apache-2.0"
+authors = ["Xie Zujun <zujunxie1@gmail.com>"]
+documentation = "https://docs.rs/irq-loongarch"
 categories = ["embedded", "no-std"]
+edition = "2024"
+readme = "README.md"
 
 [features]
 default = []
