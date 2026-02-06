@@ -1,0 +1,1 @@
+rd_("mirq_loongarch")
