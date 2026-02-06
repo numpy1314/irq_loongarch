@@ -38,19 +38,19 @@ jobs:
           TAG="${{ github.ref_name }}"
           TAG_COMMIT=$(git rev-list -n 1 "$TAG")
 
-          git fetch origin no_std
+          git fetch origin main
 
-          NO_STD_HEAD=$(git rev-parse origin/no_std)
+          main_HEAD=$(git rev-parse origin/main)
 
           echo "Tag:         $TAG"
           echo "Tag commit:  $TAG_COMMIT"
-          echo "no_std HEAD: $NO_STD_HEAD"
+          echo "main HEAD: $main_HEAD"
 
-          if [ "$TAG_COMMIT" != "$NO_STD_HEAD" ]; then
-            echo "❌ release tag must be created from no_std HEAD"
+          if [ "$TAG_COMMIT" != "$main_HEAD" ]; then
+            echo "❌ release tag must be created from main HEAD"
             exit 1
           fi
-          echo "✅ tag validated on no_std"
+          echo "✅ tag validated on main"
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
