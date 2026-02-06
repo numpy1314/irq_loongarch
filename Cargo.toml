@@ -1,0 +1,19 @@
+[package]
+name = "irq-loongarch"                 # crates.io 上显示的包名
+version = "0.1.0"
+edition = "2024"
+description = "LoongArch IRQ controller drivers (EIOINTC/PCH-PIC/LIOINTC)"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/<your-org-or-you>/irq_loongarch"
+keywords = ["loongarch", "irq", "interrupt", "bare-metal", "kernel"]
+categories = ["embedded", "no-std"]
+
+[features]
+default = []
+eiointc = ["dep:loongArch64"]
+liointc = ["dep:loongArch64"]
+pch-pic = []
+
+[dependencies]
+loongArch64 = { version = "0.2", optional = true }
