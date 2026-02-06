@@ -1,0 +1,63 @@
+name: check
+
+on:
+  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Check Formatting
+        run: cargo fmt --all --check
+
+      - name: clippy (no default features)
+        run: cargo clippy --no-default-features
+      
+      - name: clippy (pch-pic)
+        run: cargo clippy --features pch-pic
+
+      - name: check (no default features)
+        run: cargo check --no-default-features
+
+      - name: check (pch-pic)
+        run: cargo check --features pch-pic
+      
+      - name: build (no default features)
+        run: cargo build --no-default-features
+
+      - name: build (pch-pic)
+        run: cargo build --features pch-pic
+
+
+  check-loongarch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (nightly)
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          targets: loongarch64-unknown-linux-gnu, loongarch64-unknown-none-softfloat
+
+      - name: check (loongarch64-unknown-linux-gnu)
+        run: cargo +nightly check --target loongarch64-unknown-linux-gnu --features eiointc,liointc
+
+      - name: check (loongarch64-unknown-none-softfloat)
+        run: cargo +nightly check --target loongarch64-unknown-none-softfloat --features eiointc,liointc
+
+      - name: build (loongarch64-unknown-linux-gnu)
+        run: cargo +nightly build --no-default-features --target loongarch64-unknown-linux-gnu --features eiointc,liointc
+
+      - name: build (loongarch64-unknown-none-softfloat)
+        run: cargo +nightly build --no-default-features --target loongarch64-unknown-none-softfloat --features eiointc,liointc

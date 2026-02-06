@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-host:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: test (no default features)
+        run: cargo test --no-default-features
+
+      - name: test (pch-pic)
+        run: cargo test --features pch-pic

@@ -12,11 +12,14 @@ categories = ["embedded", "no-std"]
 edition = "2024"
 readme = "README.md"
 
+[dependencies]
+
 [features]
 default = []
+pch-pic = []
 eiointc = ["dep:loongArch64"]
 liointc = ["dep:loongArch64"]
-pch-pic = []
 
-[dependencies]
-loongArch64 = { version = "0.2", optional = true }
+[target.'cfg(target_arch = "loongarch64")'.dependencies]
+loongArch64 = { version = "0.2.5", optional = true }
+

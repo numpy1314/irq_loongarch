@@ -112,3 +112,10 @@ Licensed under either of:
 - MIT license
 
 at your option.
+
+## Test
+
+```bash
+cargo test --no-default-features
+cargo test --features pch-pic
+```
